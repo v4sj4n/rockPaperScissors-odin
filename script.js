@@ -5,53 +5,51 @@ function getComputerChoice() {
   return choices[computerChoiceIndex];
 }
 
-let userChoice;
-
 function singleGame(user, computer) {
-  console.log(`User choice: ${user}\nComputer choice: ${computer}`);
+  //   console.log(`User choice: ${user}\nComputer choice: ${computer}`);
   if (user === "rock") {
     if (computer === "rock") {
-      console.log("Draw");
+      return 0.5;
     } else if (computer === "paper") {
-      console.log("You lose! Computer wins!");
+      return 0;
     } else {
-      console.log("You win! Computer loses!");
+      return 1;
     }
   } else if (user === "paper") {
     if (computer === "rock") {
-      console.log("You win! Computer loses!");
+      return 1;
     } else if (computer === "paper") {
-      console.log("Draw");
+      return 0.5;
     } else {
-      console.log("You lose! Computer wins!");
+      return 0;
     }
   } else if (user === "scissors") {
     if (computer === "rock") {
-      console.log("You lose! Computer wins!");
       return 0;
     } else if (computer === "paper") {
-      console.log("You win! Computer loses!");
       return 1;
     } else {
-      console.log("Draw");
+      return 0.5;
     }
   } else {
-    console.log(`Please enter a value from this list ${choices}`);
+    return `Please enter a value from this list ${choices}`;
   }
 }
 
-function game(rounds, singleGame) {
+function game(rounds, func) {
   let comp = 0;
   let usr = 0;
   for (let i = 0; i < rounds; i++) {
-    userChoice = prompt(
-        `Please enter a value from the list of possible choices which are ${choices}`
-      ).toLowerCase();
-    if (singleGame(userChoice, getComputerChoice()) === 0) {
-      comp += 1;
+    let userChoice = prompt(`Please enter a value`);
+    let res = func(userChoice, getComputerChoice());
+    if (res === 0) {
+      comp++;
+    } else if (res === 1) {
+      usr++;
     } else {
-      usr += 1;
     }
   }
-  console.log(comp, usr);
+  alert(`Computer ${comp} : ${usr} User`);
 }
+
+game(prompt("how many rounds would you like to play"), singleGame);
