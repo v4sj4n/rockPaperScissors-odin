@@ -5,12 +5,10 @@ function getComputerChoice() {
   return choices[computerChoiceIndex];
 }
 
-const userChoice = prompt(
-  `Please enter a value from the list of possible choices which are ${choices}`
-).toLowerCase();
+let userChoice;
 
 function singleGame(user, computer) {
-    console.log(`User choice: ${user}\nComputer choice: ${computer}`);
+  console.log(`User choice: ${user}\nComputer choice: ${computer}`);
   if (user === "rock") {
     if (computer === "rock") {
       console.log("Draw");
@@ -30,8 +28,10 @@ function singleGame(user, computer) {
   } else if (user === "scissors") {
     if (computer === "rock") {
       console.log("You lose! Computer wins!");
+      return 0;
     } else if (computer === "paper") {
       console.log("You win! Computer loses!");
+      return 1;
     } else {
       console.log("Draw");
     }
@@ -39,4 +39,19 @@ function singleGame(user, computer) {
     console.log(`Please enter a value from this list ${choices}`);
   }
 }
-singleGame(userChoice, getComputerChoice());
+
+function game(rounds, singleGame) {
+  let comp = 0;
+  let usr = 0;
+  for (let i = 0; i < rounds; i++) {
+    userChoice = prompt(
+        `Please enter a value from the list of possible choices which are ${choices}`
+      ).toLowerCase();
+    if (singleGame(userChoice, getComputerChoice()) === 0) {
+      comp += 1;
+    } else {
+      usr += 1;
+    }
+  }
+  console.log(comp, usr);
+}
