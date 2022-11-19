@@ -63,6 +63,6 @@ main > div > button:hover {
   background-color: rgb(255, 255, 255, 0.5);
 }
 
-.score{
-  display: none;
+main > div {
+  padding-right: 20px;
 }
