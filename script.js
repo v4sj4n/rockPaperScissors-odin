@@ -1,55 +1,29 @@
 const choices = ["rock", "paper", "scissors"];
 
-function getComputerChoice() {
-  const computerChoiceIndex = Math.floor(Math.random() * 3);
-  return choices[computerChoiceIndex];
-}
+let header = document.querySelector("header");
 
-function singleGame(user, computer) {
-  //   console.log(`User choice: ${user}\nComputer choice: ${computer}`);
-  if (user === "rock") {
-    if (computer === "rock") {
-      return 0.5;
-    } else if (computer === "paper") {
-      return 0;
-    } else {
-      return 1;
-    }
-  } else if (user === "paper") {
-    if (computer === "rock") {
-      return 1;
-    } else if (computer === "paper") {
-      return 0.5;
-    } else {
-      return 0;
-    }
-  } else if (user === "scissors") {
-    if (computer === "rock") {
-      return 0;
-    } else if (computer === "paper") {
-      return 1;
-    } else {
-      return 0.5;
-    }
-  } else {
-    return `Please enter a value from this list ${choices}`;
-  }
-}
+// Round button logic
+let rounds = document.querySelectorAll(".rounds").forEach((item) => {
+  item.addEventListener("click", () => {
+    // Listening for each button
+    clickedRound = item.getAttribute("rounds");
 
-function game(rounds, func) {
-  let comp = 0;
-  let usr = 0;
-  for (let i = 0; i < rounds; i++) {
-    let userChoice = prompt(`Please enter a value`);
-    let res = func(userChoice, getComputerChoice());
-    if (res === 0) {
-      comp++;
-    } else if (res === 1) {
-      usr++;
-    } else {
-    }
-  }
-  alert(`Computer ${comp} : ${usr} User`);
-}
+    let h3InfoRounds = document.createElement("h3");
+    h3InfoRounds.textContent = `You chose best of ${clickedRound}`;
+    h3InfoRounds.style.color = "#34cb98";
+    header.appendChild(h3InfoRounds);
 
-game(prompt("how many rounds would you like to play"), singleGame);
+    let roundsDiv = document.getElementById("round-chooser");
+    roundsDiv.style.display = "none";
+    return clickedRound;
+  });
+});
+
+let attack = document.querySelectorAll(".rps").forEach((item) => {
+  item.addEventListener("click", () => {
+    let scores = document.querySelectorAll(".score");
+    scores.forEach((score) => {
+      score.style.display = "block";
+    });
+  });
+});

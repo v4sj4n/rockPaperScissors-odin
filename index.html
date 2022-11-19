@@ -17,10 +17,10 @@
     <header>
       <h1>✊✋✌</h1>
       <h2>How many rounds would you like to play?</h2>
-      <div>
-        <button>Best of 3</button>
-        <button>Best of 5</button>
-        <button>Best of 7</button>
+      <div id="round-chooser">
+        <button class="rounds" rounds="3">Best of 3</button>
+        <button class="rounds" rounds="5">Best of 5</button>
+        <button class="rounds" rounds="7">Best of 7</button>
       </div>
     </header>
     <main>
@@ -28,19 +28,19 @@
         <div>
           <h1>✊</h1>
           <h2>Player</h2>
-          <h1>3</h1>
+          <h1 class="score">3</h1>
         </div>
         <h2>-</h2>
         <div>
           <h1>✋</h1>
           <h2>Computer</h2>
-          <h1>2</h1>
+          <h1 class="score">2</h1>
         </div>
       </section>
       <div>
-        <button>✊</button>
-        <button>✋</button>
-        <button>✌</button>
+        <button class="rps">✊</button>
+        <button class="rps">✋</button>
+        <button class="rps">✌</button>
       </div>
     </main>
     <script src="script.js"></script>
